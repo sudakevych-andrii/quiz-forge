@@ -38,3 +38,9 @@ repos:
         language: system
         files: ^frontend/.*\.(js|jsx|mjs|ts|tsx)$
         pass_filenames: false
+
+  # Validates .github/workflows/*.yml against the GitHub Actions schema
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.39.0
+    hooks:
+      - id: check-github-workflows
