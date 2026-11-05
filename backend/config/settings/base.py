@@ -38,7 +38,14 @@ THIRD_PARTY_APPS = [
     "rest_framework",
 ]
 
-LOCAL_APPS: list[str] = []
+LOCAL_APPS = [
+    "apps.accounts",
+    "apps.quizzes",
+    "apps.categories",
+    "apps.attempts",
+    "apps.results",
+    "apps.analytics",
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
