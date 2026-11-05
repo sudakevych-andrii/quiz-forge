@@ -90,6 +90,15 @@ DATABASES = {
 
 # --- Auth -------------------------------------------------------------------
 
+AUTH_USER_MODEL = "accounts.User"
+
+# Argon2id first: new and re-hashed passwords use it; PBKDF2 stays to verify
+# any hashes created before the switch
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+]
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
