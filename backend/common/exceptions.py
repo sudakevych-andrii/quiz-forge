@@ -20,7 +20,7 @@ class ApiError(exceptions.APIException):
             default_detail = "Test not found"
     """
 
-    status_code = status.HTTP_400_BAD_REQUEST
+    status_code: int = status.HTTP_400_BAD_REQUEST
     default_code = "BAD_REQUEST"
     default_detail = "Bad request"
 
