@@ -45,10 +45,17 @@ def exception_handler(exc: Exception, context: dict[str, Any]) -> Response | Non
             "details": exc.detail,
         }
     else:
-        error = {
-            "code": str(exc.get_codes()).upper(),
-            "message": str(exc.detail),
-        }
+        # Most errors carry a plain string; some (e.g. Simple JWT's InvalidToken)
+        # carry a dict, so fall back to the class-level code and message
+        codes = exc.get_codes()
+        code = codes if isinstance(codes, str) else exc.default_code
+        detail = exc.detail
+        message = (
+            detail.get("detail", exc.default_detail)
+            if isinstance(detail, dict)
+            else detail
+        )
+        error = {"code": str(code).upper(), "message": str(message)}
 
     response.data = {"error": error}
     return response

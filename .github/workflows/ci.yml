@@ -37,7 +37,7 @@ jobs:
           --health-retries 10
 
     env:
-      DJANGO_SECRET_KEY: ci-insecure-secret-key
+      DJANGO_SECRET_KEY: ci-insecure-secret-key-for-tests-only-0123456789
       DATABASE_URL: postgres://quizforge:quizforge@localhost:5432/quizforge
 
     steps:
