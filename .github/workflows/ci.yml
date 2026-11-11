@@ -68,6 +68,9 @@ jobs:
       - name: Check for missing migrations
         run: python manage.py makemigrations --check --dry-run
 
+      - name: Validate OpenAPI schema
+        run: python manage.py spectacular --validate --fail-on-warn --file /dev/null
+
   frontend:
     name: Frontend
     runs-on: ubuntu-latest
