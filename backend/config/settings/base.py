@@ -126,6 +126,10 @@ REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "common.exceptions.exception_handler",
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    # Per-view limits: views opt in with throttle_scope + ScopedRateThrottle
+    "DEFAULT_THROTTLE_RATES": {
+        "register": "10/hour",
+    },
 }
 
 SIMPLE_JWT = {

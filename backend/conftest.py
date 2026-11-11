@@ -1,11 +1,18 @@
 """Fixtures shared by all tests."""
 
 import pytest
+from django.core.cache import cache
 from rest_framework.test import APIClient
 
 from apps.accounts.models import User
 
 PASSWORD = "Str0ng-pass!"
+
+
+@pytest.fixture(autouse=True)
+def _clear_cache() -> None:
+    """Throttling counters live in the cache; don't leak them between tests."""
+    cache.clear()
 
 
 @pytest.fixture
